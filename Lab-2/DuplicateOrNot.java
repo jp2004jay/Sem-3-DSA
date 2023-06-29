@@ -5,7 +5,7 @@ public class DuplicateOrNot{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("How many elements? ");
 		int n = sc.nextInt();
-		
+		boolean isFound = false;
 		int a[] = new int[n];
 		
 		for(int i=0; i<n; i++){
@@ -13,20 +13,17 @@ public class DuplicateOrNot{
 			a[i] = sc.nextInt();
 		}
 		
-		int dupliIndex = 0;
-		int dupli = a[dupliIndex];
-		for(int i=1; i<n; i++){
-			if(dupli == a[i]){
-				dupli = a[i];
-				dupliIndex = i;
+		for(int i=0; i<a.length; i++){
+			for(int j=i+1; j<a.length; j++){
+				if(a[i] == a[j]){
+					System.out.println("Duplicate index found at: "+j);
+					isFound = true;
+				}
 			}
 		}
 		
-		if(dupliIndex == 0){
+		if(!isFound){
 			System.out.println("Duplicate element not found");
-		}
-		else{
-			System.out.println("Duplicate element found "+dupli+", At: "+dupliIndex+" Position.");
 		}
 	}
 }
